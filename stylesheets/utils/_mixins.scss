@@ -1,0 +1,143 @@
+//main: ../main.scss
+
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+   @if $self{
+    &,
+    &:active,
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+  @else {
+    &:active,
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+@mixin font-face($fontFamily, $path, $fileName, $svgLabel, $fontWeight: normal, $fontStyle: normal) {
+   @font-face{
+    font-family: $fontFamily;
+    src: url('#{$path + $fileName}.eot');
+    src: url('#{$path + $fileName}.eot?#iefix') format('embedded-opentype'), url('#{$path + $fileName}.woff') format('woff'), url('#{$path + $fileName}.ttf') format('truetype'), url('#{$path + $fileName}.svg##{$svgLabel}') format('svg');
+    font-weight: $fontWeight;
+    font-style: $fontStyle;
+  }
+}
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media screen and (max-width: 575px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "sm-down" {
+    @media screen and (max-width: 767px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "sm" {
+    @media (min-width: 576px) and (max-width: 767px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "sm-up" {
+    @media screen and (min-width: 576px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "md-down" {
+    @media screen and (max-width: 991px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "md" {
+    @media (min-width: 768px) and (max-width: 991px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "md-up" {
+    @media screen and (min-width: 768px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "lg-down" {
+    @media screen and (max-width: 1199px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "lg" {
+    @media (min-width: 992px) and (max-width: 1199px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "lg-up" {
+    @media screen and (min-width: 992px) {
+       @content;
+    }
+  }
+
+  @else if $breakpoint == "xl" {
+    @media screen and (min-width: 1200px) {
+       @content;
+    }
+  }
+}
+@mixin transition($properties...) {
+  -webkit-transition: $properties;
+  -moz-transition: $properties;
+  -ms-transition: $properties;
+  -o-transform: $properties;
+  transition: $properties;
+}
+@mixin transform($properties...) {
+  -webkit-transform: $properties;
+  -moz-transform: $properties;
+  -ms-transform: $properties;
+  -o-transform: $properties;
+  transform: $properties;
+}
+@mixin animation($properties...) {
+  -webkit-animation: $properties;
+  -moz-animation: $properties;
+  -ms-animation: $properties;
+  -o-animation: $properties;
+  animation: $properties;
+}
+@mixin keyframes($keyframesName) {
+   @-webkit-keyframes #{$keyframesName}{
+    @content;
+  }
+  @-moz-keyframes #{$keyframesName} {
+     @content;
+  }
+  @keyframes #{$keyframesName} {
+     @content;
+  }
+}
