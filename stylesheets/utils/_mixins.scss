@@ -130,6 +130,20 @@
   -o-animation: $properties;
   animation: $properties;
 }
+@mixin boxShadow($properties...) {
+  -webkit-box-shadow: $properties;
+  -moz-box-shadow: $properties;
+  -ms-box-shadow: $properties;
+  -o-box-shadow: $properties;
+  box-shadow: $properties;
+}
+@mixin linearGradient($properties...) {
+  background: -webkit-+$properties;
+  background: -moz-+$properties;
+  background: -ms-+$properties;
+  background: -o-+$properties;
+  background: $properties;
+}
 @mixin keyframes($keyframesName) {
    @-webkit-keyframes #{$keyframesName}{
     @content;
