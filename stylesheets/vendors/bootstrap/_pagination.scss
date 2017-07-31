@@ -1,4 +1,7 @@
+//main: ../../main.scss
 .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   // 1-2: Disable browser default list styles
   padding-left: 0; // 1

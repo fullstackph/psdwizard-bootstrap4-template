@@ -1,3 +1,4 @@
+//main: ../../../main.scss
 /// Grid system
 //
 // Generate semantic grid columns with these mixins.
@@ -38,8 +39,11 @@
 }
 
 @mixin make-row($gutters: $grid-gutter-widths) {
-  display: flex;
-  flex-wrap: wrap;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -68,6 +72,8 @@
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 percentage($size / $columns);
   flex: 0 0 percentage($size / $columns);
   // width: percentage($size / $columns);
   // Add a `max-width` to ensure content within each column does not blow out

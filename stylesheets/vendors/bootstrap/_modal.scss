@@ -1,3 +1,4 @@
+//main: ../../main.scss
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
@@ -48,7 +49,12 @@
 // Actual modal
 .modal-content {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   background-color: $modal-content-bg;
   background-clip: padding-box;
@@ -77,9 +83,15 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center; // vertically center it
-  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; /* vertically center it*/
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; /* Put modal header elements (title and dismiss) on opposite ends*/
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
 }
@@ -96,15 +108,23 @@
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when should there be a fixed height on `.modal-dialog`.
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: $modal-inner-padding;
 }
 
 // Footer (for actions)
 .modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center; // vertically center
-  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; /* vertically center*/
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end; /* Right align buttons with flex property because text-align doesn't work on flex items*/
   padding: $modal-inner-padding;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
 

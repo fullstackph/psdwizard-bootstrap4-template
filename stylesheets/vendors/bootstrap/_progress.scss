@@ -1,3 +1,4 @@
+//main: ../../main.scss
 // Progress animations
 @keyframes progress-bar-stripes {
   from { background-position: $progress-height 0; }
@@ -6,6 +7,8 @@
 
 // Basic progress bar
 .progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow: hidden; // force rounded corners by cropping it
   font-size: $progress-font-size;

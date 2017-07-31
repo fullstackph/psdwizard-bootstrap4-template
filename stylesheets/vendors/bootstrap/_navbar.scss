@@ -1,3 +1,4 @@
+//main: ../../main.scss
 // Contents
 //
 // Navbar
@@ -17,7 +18,12 @@
 
 .navbar {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
 }
@@ -47,8 +53,13 @@
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; /* cannot use `inherit` to get the `.navbar`s value*/
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -78,7 +89,8 @@
 
 // Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
-  align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
+  -ms-flex-item-align: start;
+  align-self: flex-start; /* Prevent toggler from growing to full width when it's the only visible navbar child*/
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
@@ -137,11 +149,20 @@
       }
 
       @include media-breakpoint-up($next) {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
         flex-direction: row;
+        -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
 
         .navbar-nav {
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: row;
           flex-direction: row;
 
           .nav-link {
@@ -152,13 +173,20 @@
 
         // For nesting containers, have to redeclare for alignment purposes
         > .container {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
+          -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
           align-items: center;
         }
 
         // scss-lint:disable ImportantRule
         .navbar-collapse {
+          display: -webkit-box !important;
+          display: -ms-flexbox !important;
           display: flex !important;
           width: 100%;
         }

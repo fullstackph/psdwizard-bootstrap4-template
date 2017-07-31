@@ -1,9 +1,12 @@
+//main: ../../main.scss
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
 
 .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding-left: 0;
   margin-bottom: 0;
@@ -92,6 +95,8 @@
 
 .nav-fill {
   .nav-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     text-align: center;
   }
@@ -99,6 +104,8 @@
 
 .nav-justified {
   .nav-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 100%;
     flex: 1 1 100%;
     text-align: center;
   }

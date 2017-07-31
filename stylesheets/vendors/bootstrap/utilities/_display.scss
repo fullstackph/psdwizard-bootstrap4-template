@@ -1,3 +1,4 @@
+//main:../../../main.scss
 //
 // Display utilities
 //
@@ -12,7 +13,13 @@
     .d#{$infix}-block        { display: block !important; }
     .d#{$infix}-table        { display: table !important; }
     .d#{$infix}-table-cell   { display: table-cell !important; }
-    .d#{$infix}-flex         { display: flex !important; }
-    .d#{$infix}-inline-flex  { display: inline-flex !important; }
+    .d#{$infix}-flex         {
+      display: flex !important;
+    }
+    .d#{$infix}-inline-flex  {
+      display: -webkit-inline-box !important;
+      display: -ms-inline-flexbox !important;
+      display: inline-flex !important;
+    }
   }
 }
