@@ -6,10 +6,12 @@
 .card {
   position: relative;
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   background-color: $card-bg;
@@ -21,6 +23,7 @@
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: $card-spacer-x;
@@ -194,12 +197,27 @@
 
 @include media-breakpoint-up(sm) {
   .card-deck {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
 
     .card {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
-      flex: 1 0 0;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 0 0%;
+      -ms-flex: 1 0 0%;
+      flex: 1 0 0%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
       flex-direction: column;
 
       // Selectively apply horizontal margins to cards to avoid doing the
@@ -218,11 +236,19 @@
 
 @include media-breakpoint-up(sm) {
   .card-group {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
 
     .card {
-      flex: 1 0 0;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 0 0%;
+      -ms-flex: 1 0 0%;
+      flex: 1 0 0%;
 
       + .card {
         margin-left: 0;
@@ -272,7 +298,9 @@
 
 @include media-breakpoint-up(sm) {
   .card-columns {
+    -webkit-column-count: $card-columns-count;
     column-count: $card-columns-count;
+    -webkit-column-gap: $card-columns-gap;
     column-gap: $card-columns-gap;
 
     .card {

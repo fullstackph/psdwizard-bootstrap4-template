@@ -298,13 +298,14 @@ select.form-control-lg {
 
 .form-inline {
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   -webkit-box-align: center;
+  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
 
@@ -319,12 +320,15 @@ select.form-control-lg {
   @include media-breakpoint-up(sm) {
     label {
       display: -webkit-box;
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-align: center;
+      -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
       -webkit-box-pack: center;
+      -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
       margin-bottom: 0;
@@ -333,16 +337,18 @@ select.form-control-lg {
     // Inline-block all the things for "inline"
     .form-group {
       display: -webkit-box;
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-flex: 0;
+      -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
+      -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
       flex-flow: row wrap;
       -webkit-box-align: center;
+      -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
       margin-bottom: 0;
@@ -373,12 +379,15 @@ select.form-control-lg {
     // then undo the floating of radios and checkboxes to match.
     .form-check {
       display: -webkit-box;
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-align: center;
+      -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
       -webkit-box-pack: center;
+      -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
       width: auto;
@@ -398,12 +407,15 @@ select.form-control-lg {
     // Custom form controls
     .custom-control {
       display: -webkit-box;
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-align: center;
+      -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
       -webkit-box-pack: center;
+      -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
       padding-left: 0;

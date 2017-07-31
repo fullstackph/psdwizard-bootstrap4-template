@@ -8,6 +8,7 @@
 // Basic progress bar
 .progress {
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   overflow: hidden; // force rounded corners by cropping it

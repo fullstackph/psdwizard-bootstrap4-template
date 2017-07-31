@@ -34,12 +34,14 @@
         -ms-flex-preferred-size: 0;
         flex-basis: 0;
         -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
         flex-grow: 1;
         max-width: 100%;
       }
       .col#{$infix}-auto {
         -webkit-box-flex: 0;
+        -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
         flex: 0 0 auto;
         width: auto;
