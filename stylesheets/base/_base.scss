@@ -51,6 +51,8 @@ input[type="text"] {
 
     @include transition(0.5s cubic-bezier(0.65, 0.05, 0.36, 1));
 
+    @include box-shadow(none);
+
     &+.icon-bar {
       margin-top: 4px;
     }

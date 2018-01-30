@@ -130,25 +130,33 @@
   -o-animation: $properties;
   animation: $properties;
 }
-@mixin box-shadow($properties...) {
+@mixin boxshadow($properties...) {
   -webkit-box-shadow: $properties;
   -moz-box-shadow: $properties;
   -ms-box-shadow: $properties;
   -o-box-shadow: $properties;
   box-shadow: $properties;
 }
+@mixin text-shadow($properties...) {
+  -webkit-text-shadow: $properties;
+  -moz-text-shadow: $properties;
+  -ms-text-shadow: $properties;
+  -o-text-shadow: $properties;
+  text-shadow: $properties;
+}
 @mixin linear-gradient($direction, $colors...) {
  @if $direction == 'right' {
    background: -webkit-linear-gradient(left, $colors);
+   background: -moz-linear-gradient(left, $colors);
    background: linear-gradient(to $direction, $colors);
  } @else if $direction == 'left' {
    background: -webkit-linear-gradient(right, $colors);
+   background: -moz-linear-gradient(right, $colors);
    background: linear-gradient(to $direction, $colors);
  } @else {
    background: -webkit-linear-gradient($direction, $colors);
    background: linear-gradient($direction, $colors);
  }
- background: -moz-linear-gradient($direction, $colors);
  background: -o-linear-gradient($direction,$colors);
 }
 @mixin radial-gradient($properties...) {
@@ -167,4 +175,11 @@
   @keyframes #{$keyframesName} {
      @content;
   }
+}
+@mixin user-select($property) {
+  -webkit-user-select: $property;
+  -moz-user-select: $property;
+  -ms-user-select: $property;
+  -o-user-select: $property;
+  user-select: $property;
 }
