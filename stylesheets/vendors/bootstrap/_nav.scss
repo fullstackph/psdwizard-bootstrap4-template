@@ -9,6 +9,9 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -16,19 +19,17 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding;
+  padding: $nav-link-padding-y $nav-link-padding-x;
 
   @include hover-focus {
     text-decoration: none;
   }
 
-  // Disabled state lightens text and removes hover/tab effects
+  // Disabled state lightens text
   &.disabled {
-    color: $nav-disabled-link-color;
-    cursor: $cursor-disabled;
+    color: $nav-link-disabled-color;
   }
 }
-
 
 //
 // Tabs
@@ -46,11 +47,11 @@
     @include border-top-radius($nav-tabs-border-radius);
 
     @include hover-focus {
-      border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+      border-color: $nav-tabs-link-hover-border-color;
     }
 
     &.disabled {
-      color: $nav-disabled-link-color;
+      color: $nav-link-disabled-color;
       background-color: transparent;
       border-color: transparent;
     }
@@ -58,9 +59,9 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-active-link-hover-color;
-    background-color: $nav-tabs-active-link-hover-bg;
-    border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color;
   }
 
   .dropdown-menu {
@@ -82,10 +83,9 @@
   }
 
   .nav-link.active,
-  .nav-item.show .nav-link {
-    color: $nav-pills-active-link-color;
-    cursor: default;
-    background-color: $nav-pills-active-link-bg;
+  .show > .nav-link {
+    color: $nav-pills-link-active-color;
+    background-color: $nav-pills-link-active-bg;
   }
 }
 
@@ -106,10 +106,11 @@
 
 .nav-justified {
   .nav-item {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
     -webkit-box-flex: 1;
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
     text-align: center;
   }
 }

@@ -1,6 +1,7 @@
-//main:../../../main.scss
+//main: ../../../main.scss
+// stylelint-disable declaration-no-important
 //
-// Display utilities
+// Utilities for common `display` values
 //
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -12,18 +13,42 @@
     .d#{$infix}-inline-block { display: inline-block !important; }
     .d#{$infix}-block        { display: block !important; }
     .d#{$infix}-table        { display: table !important; }
+    .d#{$infix}-table-row    { display: table-row !important; }
     .d#{$infix}-table-cell   { display: table-cell !important; }
     .d#{$infix}-flex         {
-      display: -webkit-box !important;
-      display: -webkit-flex !important;
-      display: -ms-flexbox !important;
+      display: -webkit-box!important;
+      display: -ms-flexbox!important;
       display: flex !important;
     }
     .d#{$infix}-inline-flex  {
-      display: -webkit-inline-box !important;
-      display: -webkit-inline-flex !important;
-      display: -ms-inline-flexbox !important;
+      display: -webkit-inline-box!important;
+      display: -ms-inline-flexbox!important;
       display: inline-flex !important;
     }
+  }
+}
+
+
+//
+// Utilities for toggling `display` in print
+//
+
+@media print {
+  .d-print-none         { display: none !important; }
+  .d-print-inline       { display: inline !important; }
+  .d-print-inline-block { display: inline-block !important; }
+  .d-print-block        { display: block !important; }
+  .d-print-table        { display: table !important; }
+  .d-print-table-row    { display: table-row !important; }
+  .d-print-table-cell   { display: table-cell !important; }
+  .d-print-flex         {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex !important;
+  }
+  .d-print-inline-flex  {
+    display: -webkit-inline-box!important;
+    display: -ms-inline-flexbox!important;
+    display: inline-flex !important;
   }
 }

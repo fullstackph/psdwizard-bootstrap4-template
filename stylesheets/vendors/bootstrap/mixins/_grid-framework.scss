@@ -1,18 +1,17 @@
 //main: ../../../main.scss
-
 // Framework grid generation
 //
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-@mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   // Common properties for all breakpoints
   %grid-column {
     position: relative;
     width: 100%;
     min-height: 1px; // Prevent columns from collapsing when empty
-
-    @include make-gutters($gutters);
+    padding-right: ($gutter / 2);
+    padding-left: ($gutter / 2);
   }
 
   @each $breakpoint in map-keys($breakpoints) {
@@ -24,7 +23,8 @@
         @extend %grid-column;
       }
     }
-    .col#{$infix} {
+    .col#{$infix},
+    .col#{$infix}-auto {
       @extend %grid-column;
     }
 
@@ -46,6 +46,7 @@
         -ms-flex: 0 0 auto;
         flex: 0 0 auto;
         width: auto;
+        max-width: none; // Reset earlier grid tiers
       }
 
       @for $i from 1 through $columns {
@@ -54,19 +55,31 @@
         }
       }
 
-      @each $modifier in (pull, push) {
-        @for $i from 0 through $columns {
-          .#{$modifier}#{$infix}-#{$i} {
-            @include make-col-modifier($modifier, $i, $columns)
-          }
+      .order#{$infix}-first {
+        -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+        order: -1;
+      }
+
+      .order#{$infix}-last {
+        -webkit-box-ordinal-group: $columns + 2;
+        -ms-flex-order: $columns + 1;
+        order: $columns + 1;
+      }
+
+      @for $i from 0 through $columns {
+        .order#{$infix}-#{$i} {
+          -webkit-box-ordinal-group: $i + 1;
+          -ms-flex-order: $i;
+          order: $i;
         }
       }
 
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
-        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-xs-0
+        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
           .offset#{$infix}-#{$i} {
-            @include make-col-modifier(offset, $i, $columns)
+            @include make-col-offset($i, $columns);
           }
         }
       }
